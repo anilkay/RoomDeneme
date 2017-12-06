@@ -53,5 +53,5 @@ public class MainActivity extends AppCompatActivity {
 }
 /*
 if Conflict in Primary Key area Throw and nasty Exception
-NIQUE constraint failed: Kisi.ogrenciNumarasi (code 1555)
+UNIQUE constraint failed: Kisi.ogrenciNumarasi (code 1555)
  */
