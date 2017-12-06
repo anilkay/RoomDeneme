@@ -15,10 +15,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
       db=Database.getAppDatabase(getApplicationContext());
-        tv=(TextView)findViewById(R.id.text2);
+        tv = findViewById(R.id.text2);
     }
     public void addKisi(Kisi kisi){
-        db.kisiDao().insert1(kisi);
+        try {
+            db.kisiDao().insert1(kisi);
+        } catch (Exception e) {
+            tv.setText(e.getMessage());
+            Log.e("Primary Key Error", e.getMessage());
+        }
     }
 
     @Override
@@ -46,3 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+/*
+if Conflict in Primary Key area Throw and nasty Exception
+NIQUE constraint failed: Kisi.ogrenciNumarasi (code 1555)
+ */
