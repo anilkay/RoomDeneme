@@ -13,19 +13,19 @@ class Address {
     public String street;
     public String state;
     public String city;
-
     @ColumnInfo(name = "post_code")
     public int postCode;
 }
 @Entity(indices = {@Index("isim")})
 public class Kisi {
+    @Embedded
+    public Address adres;
     @PrimaryKey
     int ogrenciNumarasi;
     @ColumnInfo(name = "isim")
     String isim;
     String Soyisim;
-    @Embedded
-    public Address adres;
+
     @Override
     public  String toString(){
         return ogrenciNumarasi+"  "+isim+"  "+Soyisim+" "+adres.city+" "+adres.state;
